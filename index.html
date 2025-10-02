@@ -1,0 +1,387 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Volunteer With Us – Let’s Talk</title>
+  <style>
+    :root {
+      --royal-blue: #4169E1;
+      --navy-blue: #000080;
+      --black: #000000;
+      --white: #FFFFFF;
+      --light-bg: #f9f9ff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: var(--light-bg);
+      color: var(--black);
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--royal-blue), var(--navy-blue));
+      color: var(--white);
+      padding: 1.5rem 1rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .logo-container {
+      margin-bottom: 1rem;
+      animation: fadeIn 1s ease-out;
+    }
+
+    .logo-container img {
+      max-width: 120px;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    header h1 {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+      animation: slideInUp 1s ease-out;
+    }
+
+    header p.subtitle {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      max-width: 600px;
+      margin: 0 auto;
+      animation: slideInUp 1.2s ease-out;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+
+    .intro {
+      background-color: var(--white);
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      margin-bottom: 2rem;
+      animation: fadeIn 1.4s ease-out;
+    }
+
+    .intro p {
+      font-size: 1rem;
+      color: var(--black);
+    }
+
+    form {
+      background-color: var(--white);
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      animation: fadeIn 1.6s ease-out;
+    }
+
+    .form-group {
+      margin-bottom: 1.25rem;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.6s forwards;
+    }
+
+    .form-group:nth-child(1) { animation-delay: 0.2s; }
+    .form-group:nth-child(2) { animation-delay: 0.3s; }
+    .form-group:nth-child(3) { animation-delay: 0.4s; }
+    .form-group:nth-child(4) { animation-delay: 0.5s; }
+    .form-group:nth-child(5) { animation-delay: 0.6s; }
+    .form-group:nth-child(6) { animation-delay: 0.7s; }
+    .form-group:nth-child(7) { animation-delay: 0.8s; }
+    .form-group:nth-child(8) { animation-delay: 0.9s; }
+    .form-group:nth-child(9) { animation-delay: 1.0s; }
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: var(--navy-blue);
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--royal-blue);
+      box-shadow: 0 0 0 3px rgba(65, 105, 225, 0.2);
+    }
+
+    .checkbox-group {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 0.75rem;
+      margin-top: 0.5rem;
+    }
+
+    .checkbox-item {
+      display: flex;
+      align-items: center;
+    }
+
+    .checkbox-item input {
+      width: auto;
+      margin-right: 0.5rem;
+    }
+
+    .submit-btn {
+      background: linear-gradient(to right, var(--royal-blue), var(--navy-blue));
+      color: var(--white);
+      border: none;
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+      display: block;
+      margin: 2rem auto 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+    }
+
+    .submit-btn:active {
+      transform: translateY(0);
+    }
+
+    .submit-btn::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: left 0.6s;
+    }
+
+    .submit-btn:hover::after {
+      left: 100%;
+    }
+
+    .confirmation {
+      display: none;
+      background-color: #e6f4ea;
+      color: #137333;
+      padding: 1.5rem;
+      border-radius: 12px;
+      margin-top: 2rem;
+      text-align: center;
+      font-weight: 600;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      animation: fadeIn 0.5s ease-out;
+    }
+
+    footer {
+      background-color: var(--navy-blue);
+      color: var(--white);
+      text-align: center;
+      padding: 1.5rem 1rem;
+      margin-top: 3rem;
+    }
+
+    footer p {
+      margin: 0.25rem 0;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.5rem;
+      }
+
+      header p.subtitle {
+        font-size: 1rem;
+      }
+
+      .container {
+        padding: 0 1rem;
+      }
+
+      form {
+        padding: 1.5rem;
+      }
+
+      .checkbox-group {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+      <img src="https://i.ibb.co/Df7GFckR/IMG-20250923-WA0121.jpg" alt="Let's Talk Logo">
+    </div>
+    <h1>Volunteer With Us – Inter-Tertiary Writing Competition</h1>
+    <p class="subtitle">Be a part of the movement shaping the next generation of creative voices.</p>
+  </header>
+
+  <div class="container">
+    <div class="intro">
+      <p>We are calling on passionate and skilled students from tertiary institutions across Rivers State to volunteer for the Let's Talk Inter-Tertiary Writing Competition. Join us to make an impact while gaining experience, networking, and receiving volunteer certification.</p>
+    </div>
+
+    <!-- Formspree Integration -->
+    <form action="https://formspree.io/f/intertertiarywritingcompetitio@gmail.com" method="POST">
+      <div class="form-group">
+        <label for="fullName">Full Name</label>
+        <input type="text" id="fullName" name="Full Name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="Email Address" required>
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Phone Number (WhatsApp preferred)</label>
+        <input type="tel" id="phone" name="Phone Number" required>
+      </div>
+
+      <div class="form-group">
+        <label for="institution">Tertiary Institution</label>
+        <input type="text" id="institution" name="Tertiary Institution" required>
+      </div>
+
+      <div class="form-group">
+        <label for="course">Course of Study / Department</label>
+        <input type="text" id="course" name="Course of Study / Department" required>
+      </div>
+
+      <div class="form-group">
+        <label for="level">Level / Year of Study</label>
+        <input type="text" id="level" name="Level / Year of Study" required>
+      </div>
+
+      <div class="form-group">
+        <label>Preferred Volunteer Role (Select up to two)</label>
+        <div class="checkbox-group">
+          <div class="checkbox-item">
+            <input type="checkbox" name="Volunteer Role" value="Publicity & Social Media" id="role1">
+            <label for="role1">Publicity & Social Media</label>
+          </div>
+          <div class="checkbox-item">
+            <input type="checkbox" name="Volunteer Role" value="Event Planning & Logistics" id="role2">
+            <label for="role2">Event Planning & Logistics</label>
+          </div>
+          <div class="checkbox-item">
+            <input type="checkbox" name="Volunteer Role" value="Judging & Editorial Support" id="role3">
+            <label for="role3">Judging & Editorial Support</label>
+          </div>
+          <div class="checkbox-item">
+            <input type="checkbox" name="Volunteer Role" value="Technical / ICT Support" id="role4">
+            <label for="role4">Technical / ICT Support</label>
+          </div>
+          <div class="checkbox-item">
+            <input type="checkbox" name="Volunteer Role" value="Media (Photo/Video)" id="role5">
+            <label for="role5">Media (Photo/Video)</label>
+          </div>
+          <div class="checkbox-item">
+            <input type="checkbox" name="Volunteer Role" value="PR & Communications" id="role6">
+            <label for="role6">PR & Communications</label>
+          </div>
+          <div class="checkbox-item">
+            <input type="checkbox" name="Volunteer Role" value="On-site Coordination" id="role7">
+            <label for="role7">On-site Coordination</label>
+          </div>
+          <div class="checkbox-item">
+            <input type="checkbox" name="Volunteer Role" value="Registration / Front Desk" id="role8">
+            <label for="role8">Registration / Front Desk</label>
+          </div>
+          <div class="checkbox-item">
+            <input type="checkbox" name="Volunteer Role" value="Ushering & Guest Coordination" id="role9">
+            <label for="role9">Ushering & Guest Coordination</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="motivation">Why do you want to volunteer?</label>
+        <textarea id="motivation" name="Why do you want to volunteer?" rows="4" required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label class="checkbox-item">
+          <input type="checkbox" name="Consent" value="I agree to commit to the responsibilities..." required>
+          I agree to commit to the responsibilities assigned during the planning and execution of the competition.
+        </label>
+      </div>
+
+      <button type="submit" class="submit-btn">Submit Application</button>
+    </form>
+
+    <div id="confirmation" class="confirmation">
+      Thank you! Your volunteer application has been submitted successfully.
+    </div>
+  </div>
+
+  <footer>
+    <p>Powered by Let’s Talk</p>
+    <p>Contact Info:</p>
+    <p>(WhatsApp) 09013374336, 08106115896</p>
+    <p>(Call Line) 08154607598</p>
+  </footer>
+
+  <script>
+    // Optional: Show confirmation after successful Formspree redirect (not always reliable)
+    // Better: rely on Formspree's default success page or use AJAX (requires paid plan)
+    // For simplicity, we keep basic behavior
+  </script>
+</body>
+</html>
